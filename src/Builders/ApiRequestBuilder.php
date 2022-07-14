@@ -2,15 +2,15 @@
 
 namespace  Gajosu\LaravelHttpClient\Builders;
 
-use GuzzleHttp\Client;
-use Gajosu\LaravelHttpClient\Builders\ApiResponse;
-use Gajosu\LaravelHttpClient\Traits\RequestModule;
-use Gajosu\LaravelHttpClient\Traits\RequestCacheModule;
 use Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder;
+use Gajosu\LaravelHttpClient\Traits\RequestCacheModule;
+use Gajosu\LaravelHttpClient\Traits\RequestModule;
+use GuzzleHttp\Client;
 
 class ApiRequestBuilder implements HttpRequestBuilder
 {
-    use RequestCacheModule, RequestModule;
+    use RequestCacheModule;
+    use RequestModule;
 
     protected ?string $base_uri = null;
     protected ?string $method = 'GET';
@@ -29,6 +29,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     public function setMethod(string $method): self
     {
         $this->method = $method;
+
         return $this;
     }
 
@@ -41,6 +42,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     public function setBaseUri(string $base_uri): self
     {
         $this->base_uri = $base_uri;
+
         return $this;
     }
 
@@ -53,6 +55,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     public function setPath(string $path): self
     {
         $this->path = $path;
+
         return $this;
     }
 
@@ -65,6 +68,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     public function setHeaders(array $headers): self
     {
         $this->headers = array_merge($this->headers, $headers);
+
         return $this;
     }
 
@@ -77,6 +81,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     public function setQuery(array $query): self
     {
         $this->query = array_merge($this->query, $query);
+
         return $this;
     }
 
@@ -91,14 +96,15 @@ class ApiRequestBuilder implements HttpRequestBuilder
         $data = [
             'name' => $name,
             'contents' => $contents,
-            'filename' => $file_name
+            'filename' => $file_name,
         ];
 
-        if (!empty($file_name)) {
+        if (! empty($file_name)) {
             $data['filename'] = $file_name;
         }
 
         $this->multipart[] = $data;
+
         return $this;
     }
 
@@ -111,6 +117,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     public function setBody(array $body): self
     {
         $this->body = array_merge($this->body, $body);
+
         return $this;
     }
 

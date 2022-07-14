@@ -2,9 +2,9 @@
 
 namespace Gajosu\LaravelHttpClient\Tests\Builders;
 
-use GuzzleHttp\Psr7\Response;
-use Gajosu\LaravelHttpClient\Tests\TestCase;
 use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake;
+use Gajosu\LaravelHttpClient\Tests\TestCase;
+use GuzzleHttp\Psr7\Response;
 
 class ApiRequestBuilderFakeTest extends TestCase
 {
@@ -14,8 +14,9 @@ class ApiRequestBuilderFakeTest extends TestCase
         $builder->shouldReceiveResponses([
             $fake_response = new Response(200, [], '{"test": "test"}'),
         ]);
-        $this->assertEquals([
-                $fake_response
+        $this->assertEquals(
+            [
+                $fake_response,
             ],
             $this->getPropertyWithReflection('responses', $builder)
         );
@@ -28,9 +29,10 @@ class ApiRequestBuilderFakeTest extends TestCase
             $fake_response = new Response(200, [], '{"test": "test"}'),
             $fake_response2 = new Response(200, [], '{"test": "test"}'),
         ]);
-        $this->assertEquals([
+        $this->assertEquals(
+            [
                 $fake_response,
-                $fake_response2
+                $fake_response2,
             ],
             $this->getPropertyWithReflection('responses', $builder)
         );
@@ -43,7 +45,7 @@ class ApiRequestBuilderFakeTest extends TestCase
             $fake_response = new Response(200, [], '{"test": "test"}'),
             $fake_response2 = new Response(200, [], '{"test": "test2"}'),
         ]);
-        
+
         $builder->setMethod('GET');
         $builder->setPath('/test');
 

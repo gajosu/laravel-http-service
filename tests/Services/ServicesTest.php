@@ -2,15 +2,14 @@
 
 namespace Gajosu\LaravelHttpClient\Tests\Services;
 
-use GuzzleHttp\Psr7\Response;
-use Gajosu\LaravelHttpClient\Tests\TestCase;
-use Gajosu\LaravelHttpClient\Contracts\Service;
-use Gajosu\LaravelHttpClient\Facades\HttpService;
 use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder;
 use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake;
-use Gajosu\LaravelHttpClient\Tests\Fixtures\CustomService;
+use Gajosu\LaravelHttpClient\Contracts\Service;
+use Gajosu\LaravelHttpClient\Facades\HttpService;
 use Gajosu\LaravelHttpClient\Tests\Fixtures\CustomServiceFacade;
 use Gajosu\LaravelHttpClient\Tests\Fixtures\CustomServiceTwoFacade;
+use Gajosu\LaravelHttpClient\Tests\TestCase;
+use GuzzleHttp\Psr7\Response;
 
 class ServicesTest extends TestCase
 {

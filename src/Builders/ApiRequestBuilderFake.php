@@ -3,16 +3,15 @@
 namespace Gajosu\LaravelHttpClient\Builders;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Handler\MockHandler;
-use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder;
-
 
 class ApiRequestBuilderFake extends ApiRequestBuilder
 {
     /** @var array<\GuzzleHttp\Psr7\Response> */
     protected array $responses = [];
+
     /**
      * Should receive a responses
      *
@@ -22,7 +21,7 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
      */
     public function shouldReceiveResponses(array|Response $responses): self
     {
-        if (!is_array($responses)) {
+        if (! is_array($responses)) {
             $responses = [$responses];
         }
 
@@ -42,7 +41,7 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
     {
         return new Client([
             'base_uri' => $this->base_uri,
-            'handler' => $this->getMockHandler()
+            'handler' => $this->getMockHandler(),
         ]);
     }
 
@@ -55,6 +54,7 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
     private function addResponse(Response $response): self
     {
         $this->responses[] = $response;
+
         return $this;
     }
 
@@ -68,7 +68,7 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
         return HandlerStack::create(
             new MockHandler(
                 [
-                    $this->getResponses()
+                    $this->getResponses(),
                 ]
             )
         );
@@ -84,6 +84,7 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
         if (count($this->responses) > 0) {
             $response = $this->responses[0];
             $this->responses = array_slice($this->responses, 1);
+
             return $response;
         }
 

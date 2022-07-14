@@ -66,7 +66,7 @@ interface HttpRequestBuilder
     /**
      * Indicate that the response should be cached
      *
-     * @param DateTime|integer|null $seconds
+     * @param DateTime|int|null $seconds
      * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
      */
     public function cacheFor(DateTime|int|null $seconds): self;
@@ -110,7 +110,7 @@ interface HttpRequestBuilder
     /**
      * Get the number of requests that have been made.
      *
-     * @return integer
+     * @return int
      */
     public function getRequestsCount(): int;
 }

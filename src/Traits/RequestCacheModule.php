@@ -33,12 +33,13 @@ trait RequestCacheModule
     /**
      * Indicate that the response should be cached
      *
-     * @param DateTime|integer|null $seconds
+     * @param DateTime|int|null $seconds
      * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
      */
     public function cacheFor(DateTime|int|null $seconds): self
     {
         $this->cache_ttl = $seconds;
+
         return $this;
     }
 
@@ -71,6 +72,7 @@ trait RequestCacheModule
     public function dontCache(bool $avoidCache = true): self
     {
         $this->avoidCache = $avoidCache;
+
         return $this;
     }
 
@@ -100,6 +102,7 @@ trait RequestCacheModule
         if ($this->cache_ttl instanceof DateTime) {
             return $this->cache_ttl->getTimestamp() - time();
         }
+
         return $this->cache_ttl;
     }
 

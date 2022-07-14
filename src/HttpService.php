@@ -28,6 +28,7 @@ class HttpService implements ServiceContract
     public function setBuilder(HttpRequestBuilder $builder): self
     {
         $this->builder = $builder;
+
         return $this;
     }
 }

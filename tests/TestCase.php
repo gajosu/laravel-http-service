@@ -2,9 +2,9 @@
 
 namespace Gajosu\LaravelHttpClient\Tests;
 
+use Gajosu\LaravelHttpClient\LaravelHttpClientServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Gajosu\LaravelHttpClient\LaravelHttpClientServiceProvider;
 
 class TestCase extends Orchestra
 {

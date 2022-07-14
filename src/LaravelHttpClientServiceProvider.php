@@ -2,9 +2,9 @@
 
 namespace Gajosu\LaravelHttpClient;
 
+use Gajosu\LaravelHttpClient\Commands\LaravelHttpClientCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Gajosu\LaravelHttpClient\Commands\LaravelHttpClientCommand;
 
 class LaravelHttpClientServiceProvider extends PackageServiceProvider
 {

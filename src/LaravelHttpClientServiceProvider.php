@@ -2,7 +2,6 @@
 
 namespace Gajosu\LaravelHttpClient;
 
-use Gajosu\LaravelHttpClient\Commands\LaravelHttpClientCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -16,10 +15,6 @@ class LaravelHttpClientServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-http-client')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-http-client_table')
-            ->hasCommand(LaravelHttpClientCommand::class);
+            ->name('laravel-http-client');
     }
 }

@@ -16,7 +16,6 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
     /**
      * Should receive a responses
      *
-     * @param string $class_name
      * @param array<\GuzzleHttp\Psr7\Response>|\GuzzleHttp\Psr7\Response $responses
      * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake
      */

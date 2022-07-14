@@ -22,8 +22,9 @@ class HttpService implements ServiceContract
 
     /**
      * Set builder
-     *
-     * @return \Gajosu\LaravelHttpClient\Contracts\Service
+     * 
+     * @param \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder $builder
+     * @return self
      */
     public function setBuilder(HttpRequestBuilder $builder): self
     {

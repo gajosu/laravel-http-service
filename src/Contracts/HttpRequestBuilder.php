@@ -26,7 +26,7 @@ interface HttpRequestBuilder
     /**
      * Set path
      *
-     * @param string $url
+     * @param string $path
      * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
      */
     public function setPath(string $path): self;
@@ -50,7 +50,9 @@ interface HttpRequestBuilder
     /**
      * Set multipart
      *
-     * @param  array $body
+     * @param  string $name
+     * @param  string $contents
+     * @param  ?string $file_name
      * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
      */
     public function setMultipart(string $name, string $contents, string $file_name = null): self;

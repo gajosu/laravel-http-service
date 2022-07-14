@@ -49,7 +49,8 @@ class HttpService extends Facade
     /**
      * Assert the requests number
      *
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiResponse
+     * @param int $times
+     * @return void
      */
     public static function assertRequestsTimes(int $times): void
     {

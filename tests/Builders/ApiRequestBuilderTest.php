@@ -2,14 +2,13 @@
 
 namespace Gajosu\LaravelHttpClient\Tests\Builders;
 
-use Mockery;
+use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder;
+use Gajosu\LaravelHttpClient\Builders\ApiResponse;
+use Gajosu\LaravelHttpClient\Tests\TestCase;
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Handler\MockHandler;
-use Gajosu\LaravelHttpClient\Tests\TestCase;
-use Gajosu\LaravelHttpClient\Builders\ApiResponse;
-use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder;
 use Illuminate\Support\Facades\Cache;
 
 class ApiRequestBuilderTest extends TestCase
@@ -68,7 +67,7 @@ class ApiRequestBuilderTest extends TestCase
             [
                 'name' => 'name',
                 'contents' => 'content',
-                'filename' => 'filename'
+                'filename' => 'filename',
             ],
             $this->getPropertyWithReflection('multipart', $builder)[0]
         );
@@ -89,7 +88,7 @@ class ApiRequestBuilderTest extends TestCase
         $this->assertEquals($time, $this->getPropertyWithReflection('cache_ttl', $builder));
         $this->assertEquals($builder->getCacheTtl(), $time->getTimestamp() - time());
     }
-    
+
     public function testItCanSetCacheForever()
     {
         $builder = new ApiRequestBuilder();
@@ -99,7 +98,7 @@ class ApiRequestBuilderTest extends TestCase
 
     public function testItCanSendRequest()
     {
-        $builder =  $this->getMockRequestBuilder();
+        $builder = $this->getMockRequestBuilder();
         $builder->setMethod('GET');
         $builder->setBaseUri('http://example.com');
         $response = $builder->send();
@@ -108,15 +107,15 @@ class ApiRequestBuilderTest extends TestCase
 
     public function testItCanSendRequestWithTemporalCache()
     {
-        $builder =  $this->getMockRequestBuilder();
+        $builder = $this->getMockRequestBuilder();
         $builder->setMethod('GET');
         $builder->setBaseUri('http://example.com');
         $builder->cacheFor(now()->addMinutes(1));
         $builder->send();
         $builder->send();
         $builder->send();
-        
-        $cache_key = $builder->getCacheKey(); 
+
+        $cache_key = $builder->getCacheKey();
         $this->assertNotNull(Cache::get($cache_key));
         $this->assertEquals(1, $builder->getRequestsCount());
 
@@ -126,14 +125,14 @@ class ApiRequestBuilderTest extends TestCase
 
     public function testItCanSendRequestWithForeverCache()
     {
-        $builder =  $this->getMockRequestBuilder();
+        $builder = $this->getMockRequestBuilder();
         $builder->setMethod('GET');
         $builder->setBaseUri('http://example.com');
         $builder->cacheForever();
         $builder->send();
         $builder->send();
-        
-        $cache_key = $builder->getCacheKey(); 
+
+        $cache_key = $builder->getCacheKey();
         $this->assertNotNull(Cache::get($cache_key));
         $this->assertEquals(1, $builder->getRequestsCount());
 
@@ -148,9 +147,9 @@ class ApiRequestBuilderTest extends TestCase
         $builder->setBaseUri('http://example.com');
         $builder->cacheFor(now()->addMinutes(1));
 
-        $cache_key = $builder->getCacheKey(); 
-        $fakeResponse = new ApiResponse(new Response (200, [], '{"test": "test"}'));
-        
+        $cache_key = $builder->getCacheKey();
+        $fakeResponse = new ApiResponse(new Response(200, [], '{"test": "test"}'));
+
         Cache::put($cache_key, $fakeResponse, now()->addMinutes(1));
         $response = $builder->send();
         $this->assertEquals($fakeResponse, $response);
@@ -162,10 +161,10 @@ class ApiRequestBuilderTest extends TestCase
      */
     private function getMockRequestBuilder()
     {
-        $builder =  $this->getMockBuilder(ApiRequestBuilder::class)
+        $builder = $this->getMockBuilder(ApiRequestBuilder::class)
             ->onlyMethods(['getclient'])
             ->getMock();
-        
+
         $builder->expects($this->once())
             ->method('getclient')
             ->willReturn($this->getMockGuzzleClient());
@@ -182,8 +181,7 @@ class ApiRequestBuilderTest extends TestCase
                         new Response(200, [], '{"test": "test"}'),
                     ]
                 )
-            )
+            ),
         ]);
-        
     }
 }

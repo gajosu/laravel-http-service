@@ -11,7 +11,7 @@ trait RequestModule
     /**
      * Get the number of requests that have been made.
      *
-     * @return integer
+     * @return int
      */
     public function getRequestsCount(): int
     {
@@ -36,6 +36,7 @@ trait RequestModule
 
         $response = $this->request();
         $this->saveResponseToCache($cache_key, $response);
+
         return $response;
     }
 
@@ -47,16 +48,16 @@ trait RequestModule
     protected function request(): ApiResponse
     {
         $options = [
-            'headers' => $this->headers
+            'headers' => $this->headers,
         ];
 
-        if (!empty($this->query)) {
+        if (! empty($this->query)) {
             $options['query'] = $this->query;
         }
 
-        if (!empty($this->multipart)) {
+        if (! empty($this->multipart)) {
             $options['multipart'] = $this->multipart;
-        } elseif (!empty($this->body)) {
+        } elseif (! empty($this->body)) {
             $options['json'] = $this->body;
         }
 
@@ -67,6 +68,7 @@ trait RequestModule
         );
 
         $this->request_count++;
+
         return new ApiResponse($response);
     }
 }

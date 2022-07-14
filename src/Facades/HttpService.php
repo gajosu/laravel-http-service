@@ -2,11 +2,11 @@
 
 namespace Gajosu\LaravelHttpClient\Facades;
 
+use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake;
+use Gajosu\LaravelHttpClient\Contracts\Service;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Facade;
 use PHPUnit\Framework\Assert as PHPUnit;
-use Gajosu\LaravelHttpClient\Contracts\Service;
-use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake;
 
 /**
  * @method static \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder getBuilder()
@@ -23,6 +23,7 @@ class HttpService extends Facade
         /** @var \Gajosu\LaravelHttpClient\Contracts\Service */
         $service = static::getFacadeRoot();
         $service->setBuilder(new ApiRequestBuilderFake());
+
         return $service;
     }
 
@@ -38,11 +39,12 @@ class HttpService extends Facade
         $service = static::getFacadeRoot();
         $builder = $service->getBuilder();
 
-        if (!$builder instanceof ApiRequestBuilderFake) {
+        if (! $builder instanceof ApiRequestBuilderFake) {
             throw new \RuntimeException('You can only use this method on a fake service');
         }
 
         $builder->shouldReceiveResponses($responses);
+
         return $service;
     }
 

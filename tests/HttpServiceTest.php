@@ -2,8 +2,8 @@
 
 namespace Gajosu\LaravelHttpClient\Tests;
 
-use Gajosu\LaravelHttpClient\HttpService;
 use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake;
+use Gajosu\LaravelHttpClient\HttpService;
 
 class HttpServiceTest extends TestCase
 {

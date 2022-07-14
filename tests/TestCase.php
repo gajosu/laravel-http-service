@@ -33,4 +33,13 @@ class TestCase extends Orchestra
         $migration->up();
         */
     }
+
+    protected function getPropertyWithReflection(string $property, object $object)
+    {
+        $reflection = new \ReflectionClass($object);
+        $reflectionProperty = $reflection->getProperty($property);
+        $reflectionProperty->setAccessible(true);
+
+        return $reflectionProperty->getValue($object);
+    }
 }

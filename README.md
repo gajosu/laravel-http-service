@@ -22,8 +22,17 @@ composer require gajosu/laravel-http-client
 ## Usage
 
 ```php
-$laravelHttpClient = new Gajosu\LaravelHttpClient();
-echo $laravelHttpClient->echoPhrase('Hello, Gajosu!');
+use Gajosu\LaravelHttpClient\Facades\HttpService;
+$builder = HttpService::getBuilder();
+$response = $builder->setMethod('GET')
+    ->baseUri('http://example.com')
+    ->setPath('/test')
+    ->setQuery([
+        'query1' => 'param'
+    ])
+    ->send();
+
+$data = $response->jsonDecode();
 ```
 
 ## Testing

@@ -2,11 +2,11 @@
 
 namespace  Gajosu\LaravelHttpClient\Request;
 
-use GuzzleHttp\Client;
-use Gajosu\LaravelHttpClient\Response\ApiResponse;
-use Gajosu\LaravelHttpClient\Traits\RequestModule;
-use Gajosu\LaravelHttpClient\Traits\RequestCacheModule;
 use Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder;
+use Gajosu\LaravelHttpClient\Response\ApiResponse;
+use Gajosu\LaravelHttpClient\Traits\RequestCacheModule;
+use Gajosu\LaravelHttpClient\Traits\RequestModule;
+use GuzzleHttp\Client;
 
 class ApiRequestBuilder implements HttpRequestBuilder
 {

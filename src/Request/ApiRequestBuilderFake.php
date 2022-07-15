@@ -1,6 +1,6 @@
 <?php
 
-namespace Gajosu\LaravelHttpClient\Builders;
+namespace Gajosu\LaravelHttpClient\Request;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
@@ -16,7 +16,7 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
      * Should receive a responses
      *
      * @param array<\GuzzleHttp\Psr7\Response>|\GuzzleHttp\Psr7\Response $responses
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilderFake
      */
     public function shouldReceiveResponses(array|Response $responses): self
     {
@@ -48,7 +48,7 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
      * Add response
      *
      * @param \GuzzleHttp\Psr7\Response $response
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilderFake
      */
     private function addResponse(Response $response): self
     {

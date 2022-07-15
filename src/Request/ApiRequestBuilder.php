@@ -1,11 +1,12 @@
 <?php
 
-namespace  Gajosu\LaravelHttpClient\Builders;
+namespace  Gajosu\LaravelHttpClient\Request;
 
-use Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder;
-use Gajosu\LaravelHttpClient\Traits\RequestCacheModule;
-use Gajosu\LaravelHttpClient\Traits\RequestModule;
 use GuzzleHttp\Client;
+use Gajosu\LaravelHttpClient\Response\ApiResponse;
+use Gajosu\LaravelHttpClient\Traits\RequestModule;
+use Gajosu\LaravelHttpClient\Traits\RequestCacheModule;
+use Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder;
 
 class ApiRequestBuilder implements HttpRequestBuilder
 {
@@ -24,7 +25,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
      * Set method
      *
      * @param  string $method
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function setMethod(string $method): self
     {
@@ -37,7 +38,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
      * Set base uri
      *
      * @param  string $base_uri
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function setBaseUri(string $base_uri): self
     {
@@ -50,7 +51,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
      * Set path
      *
      * @param string $path
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function setPath(string $path): self
     {
@@ -63,7 +64,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
      * Set headers
      *
      * @param  array $headers
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function setHeaders(array $headers): self
     {
@@ -76,7 +77,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
      * Set query string
      *
      * @param  array $query
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function setQuery(array $query): self
     {
@@ -91,7 +92,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
      * @param  string $name
      * @param  string $contents
      * @param  ?string $file_name
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function setMultipart(string $name, string $contents, string $file_name = null): self
     {
@@ -114,7 +115,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
      * Set body
      *
      * @param  array $body
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function setBody(array $body): self
     {
@@ -140,7 +141,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     /**
      * Get response of the request
      *
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
      */
     public function get(): ApiResponse
     {
@@ -150,7 +151,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     /**
      * Alias for get()
      *
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
      */
     public function send(): ApiResponse
     {

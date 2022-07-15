@@ -2,7 +2,7 @@
 
 namespace Gajosu\LaravelHttpClient\Traits;
 
-use Gajosu\LaravelHttpClient\Builders\ApiResponse;
+use Gajosu\LaravelHttpClient\Response\ApiResponse;
 
 trait RequestModule
 {
@@ -21,7 +21,7 @@ trait RequestModule
     /**
      * Send request or get from cache
      *
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
      */
     protected function sendRequest(): ApiResponse
     {
@@ -43,7 +43,7 @@ trait RequestModule
     /**
      * Send a requests
      *
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
      */
     protected function request(): ApiResponse
     {

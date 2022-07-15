@@ -2,7 +2,7 @@
 
 namespace Gajosu\LaravelHttpClient\Tests\Builders;
 
-use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilderFake;
+use Gajosu\LaravelHttpClient\Request\ApiRequestBuilderFake;
 use Gajosu\LaravelHttpClient\Tests\TestCase;
 use GuzzleHttp\Psr7\Response;
 

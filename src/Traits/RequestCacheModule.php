@@ -3,7 +3,7 @@
 namespace Gajosu\LaravelHttpClient\Traits;
 
 use DateTime;
-use Gajosu\LaravelHttpClient\Builders\ApiResponse;
+use Gajosu\LaravelHttpClient\Response\ApiResponse;
 use Illuminate\Contracts\Cache\Repository;
 
 trait RequestCacheModule
@@ -34,7 +34,7 @@ trait RequestCacheModule
      * Indicate that the response should be cached
      *
      * @param DateTime|int|null $seconds
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function cacheFor(DateTime|int|null $seconds): self
     {
@@ -46,7 +46,7 @@ trait RequestCacheModule
     /**
      * Indicate that the response should be cached forever
      *
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function cacheForever(): self
     {
@@ -67,7 +67,7 @@ trait RequestCacheModule
      * Indicate that the query should not be cached.
      *
      * @param  bool  $avoidCache
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
      */
     public function dontCache(bool $avoidCache = true): self
     {
@@ -110,7 +110,7 @@ trait RequestCacheModule
      * Save the response in the cache.
      *
      * @param string $key
-     * @param \Gajosu\LaravelHttpClient\Builders\ApiResponse $response
+     * @param \Gajosu\LaravelHttpClient\Response\ApiResponse $response
      * @return void
      */
     protected function saveResponseToCache(string $key, ApiResponse $response): void
@@ -128,7 +128,7 @@ trait RequestCacheModule
      * Get the response from the cache.
      *
      * @param string $key
-     * @return \Gajosu\LaravelHttpClient\Builders\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
      */
     protected function getResponseFromCache(string $key): ApiResponse|null
     {

@@ -2,8 +2,8 @@
 
 namespace Gajosu\LaravelHttpClient\Tests\Builders;
 
-use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder;
-use Gajosu\LaravelHttpClient\Builders\ApiResponse;
+use Gajosu\LaravelHttpClient\Request\ApiRequestBuilder;
+use Gajosu\LaravelHttpClient\Response\ApiResponse;
 use Gajosu\LaravelHttpClient\Tests\TestCase;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;

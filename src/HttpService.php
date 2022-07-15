@@ -2,7 +2,7 @@
 
 namespace Gajosu\LaravelHttpClient;
 
-use Gajosu\LaravelHttpClient\Builders\ApiRequestBuilder;
+use Gajosu\LaravelHttpClient\Request\ApiRequestBuilder;
 use Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder;
 use Gajosu\LaravelHttpClient\Contracts\Service as ServiceContract;
 

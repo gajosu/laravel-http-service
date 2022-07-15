@@ -1,6 +1,6 @@
 <?php
 
-namespace  Gajosu\LaravelHttpClient\Builders;
+namespace  Gajosu\LaravelHttpClient\Response;
 
 use Psr\Http\Message\ResponseInterface;
 
@@ -11,7 +11,7 @@ class ApiResponse
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
      */
-    public function __construct(\Psr\Http\Message\ResponseInterface $response)
+    public function __construct(ResponseInterface $response)
     {
         $this->response = $response;
     }

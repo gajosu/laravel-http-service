@@ -94,7 +94,7 @@ class ApiResponse
     /**
      * Get the headers from the response.
      *
-     * @return array<string, string>
+     * @return array<string>
      */
     public function headers(): array
     {

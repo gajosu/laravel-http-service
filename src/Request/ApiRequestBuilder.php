@@ -3,6 +3,7 @@
 namespace  Gajosu\LaravelHttpClient\Request;
 
 use Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder;
+use Gajosu\LaravelHttpClient\Contracts\Response;
 use Gajosu\LaravelHttpClient\Response\ApiResponse;
 use Gajosu\LaravelHttpClient\Traits\RequestCacheModule;
 use Gajosu\LaravelHttpClient\Traits\RequestModule;
@@ -141,9 +142,9 @@ class ApiRequestBuilder implements HttpRequestBuilder
     /**
      * Get response of the request
      *
-     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Contracts\Response
      */
-    public function get(): ApiResponse
+    public function get(): Response
     {
         return $this->sendRequest();
     }
@@ -151,9 +152,9 @@ class ApiRequestBuilder implements HttpRequestBuilder
     /**
      * Alias for get()
      *
-     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Contracts\Response
      */
-    public function send(): ApiResponse
+    public function send(): Response
     {
         return $this->get();
     }
@@ -163,6 +164,6 @@ class ApiRequestBuilder implements HttpRequestBuilder
      */
     public function __toString(): string
     {
-        return $this->sendRequest()->__toString();
+        return $this->sendRequest()->body();
     }
 }

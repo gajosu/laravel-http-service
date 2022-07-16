@@ -97,14 +97,14 @@ interface HttpRequestBuilder
     /**
      * Get response of the request
      *
-     * @return \Gajosu\LaravelHttpClient\contracts\Response
+     * @return \Gajosu\LaravelHttpClient\Contracts\Response
      */
     public function get(): Response;
 
     /**
      * Alias for get()
      *
-     * @return \Gajosu\LaravelHttpClient\contracts\Response
+     * @return \Gajosu\LaravelHttpClient\Contracts\Response
      */
     public function send(): Response;
 

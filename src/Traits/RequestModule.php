@@ -2,6 +2,7 @@
 
 namespace Gajosu\LaravelHttpClient\Traits;
 
+use Gajosu\LaravelHttpClient\Contracts\Response;
 use Gajosu\LaravelHttpClient\Response\ApiResponse;
 
 trait RequestModule
@@ -21,9 +22,9 @@ trait RequestModule
     /**
      * Send request or get from cache
      *
-     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Contracts\Response
      */
-    protected function sendRequest(): ApiResponse
+    protected function sendRequest(): Response
     {
         if ($this->shouldAvoidCache() || null == $this->cache_ttl) {
             return $this->request();

@@ -21,7 +21,7 @@ composer require gajosu/laravel-http-client
 
 ## Usage
 
-You can start using it easily, simply by calling the `getBuilder()` method of the facade `HttpService`
+You can start using it easily, simply by calling the `request()` method of the facade `HttpService`
 
 ```php
 use Gajosu\LaravelHttpClient\Facades\HttpService;

@@ -49,7 +49,7 @@ $builder->setPath('POST')
 /** @var \Gajosu\LaravelHttpClient\Response\ApiResponse $response */
 $response = $builder->send();
 // json data decoded
-$data = $response->jsonDecode();
+$data = $response->json();
 ```
 
 ## Testing

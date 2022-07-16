@@ -21,17 +21,34 @@ composer require gajosu/laravel-http-client
 
 ## Usage
 
+You can start using it easily, simply by calling the `getBuilder()` method of the facade `HttpService`
+
 ```php
 use Gajosu\LaravelHttpClient\Facades\HttpService;
+
+/** @var \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder $builder */
 $builder = HttpService::getBuilder();
-$response = $builder->setMethod('GET')
-    ->baseUri('http://example.com')
+$builder->setPath('POST')
+    //set base url
+    ->setBaseUri('http://example.com')
+    //set path
     ->setPath('/test')
+    // set headers
+    ->setHeaders([
+        'Authorization' => 'Basic {YOUR_TOKEN}'
+    ])
+    //set queries strings
     ->setQuery([
         'query1' => 'param'
     ])
-    ->send();
-
+    //set body
+    ->setBody([
+        'field1' => 'value'
+    ]);
+// send the request and get response
+/** @var \Gajosu\LaravelHttpClient\Response\ApiResponse $response */
+$response = $builder->send();
+// json data decoded
 $data = $response->jsonDecode();
 ```
 

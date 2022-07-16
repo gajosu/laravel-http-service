@@ -2,10 +2,10 @@
 
 namespace Gajosu\LaravelHttpClient\Tests\Services;
 
-use Gajosu\LaravelHttpClient\Request\ApiRequestBuilder;
-use Gajosu\LaravelHttpClient\Request\ApiRequestBuilderFake;
 use Gajosu\LaravelHttpClient\Contracts\Service;
 use Gajosu\LaravelHttpClient\Facades\HttpService;
+use Gajosu\LaravelHttpClient\Request\ApiRequestBuilder;
+use Gajosu\LaravelHttpClient\Request\ApiRequestBuilderFake;
 use Gajosu\LaravelHttpClient\Tests\Fixtures\CustomServiceFacade;
 use Gajosu\LaravelHttpClient\Tests\Fixtures\CustomServiceTwoFacade;
 use Gajosu\LaravelHttpClient\Tests\TestCase;

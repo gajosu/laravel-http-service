@@ -2,11 +2,11 @@
 
 namespace Gajosu\LaravelHttpClient\Facades;
 
+use Gajosu\LaravelHttpClient\Contracts\Service;
+use Gajosu\LaravelHttpClient\Request\ApiRequestBuilderFake;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\Facade;
 use PHPUnit\Framework\Assert as PHPUnit;
-use Gajosu\LaravelHttpClient\Contracts\Service;
-use Gajosu\LaravelHttpClient\Request\ApiRequestBuilderFake;
 
 /**
  * @method static \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder getBuilder()

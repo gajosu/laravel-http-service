@@ -49,7 +49,7 @@ class HttpService extends Facade
         $service = static::getFacadeRoot();
         $builder = $service->getBuilder();
 
-        if (!$builder instanceof ApiRequestBuilderFake) {
+        if (! $builder instanceof ApiRequestBuilderFake) {
             throw new \RuntimeException('You can only use this method on a fake service');
         }
 

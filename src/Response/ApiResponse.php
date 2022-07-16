@@ -48,7 +48,7 @@ class ApiResponse
      */
     public function json($key = null, $default = null): mixed
     {
-        if (!$this->decoded) {
+        if (! $this->decoded) {
             $this->decoded = json_decode($this->body(), true);
         }
 

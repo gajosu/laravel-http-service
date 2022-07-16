@@ -2,11 +2,10 @@
 
 namespace Gajosu\LaravelHttpClient\Tests\Builders;
 
+use Gajosu\LaravelHttpClient\Response\ApiResponse;
+use Gajosu\LaravelHttpClient\Tests\TestCase;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Collection;
-use Gajosu\LaravelHttpClient\Tests\TestCase;
-use Gajosu\LaravelHttpClient\Response\ApiResponse;
-use Gajosu\LaravelHttpClient\Request\ApiRequestBuilderFake;
 
 class ApiResponseTest extends TestCase
 {
@@ -60,9 +59,9 @@ class ApiResponseTest extends TestCase
                 [
                     'test' => 'test',
                     'sub' => [
-                        'test' => 'test'
-                    ]
-                ]
+                        'test' => 'test',
+                    ],
+                ],
             ],
         ];
 

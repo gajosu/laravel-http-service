@@ -27,8 +27,8 @@ You can start using it easily, simply by calling the `getBuilder()` method of th
 use Gajosu\LaravelHttpClient\Facades\HttpService;
 
 /** @var \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder $builder */
-$builder = HttpService::getBuilder();
-$builder->setPath('POST')
+$builder = HttpService::request()
+    ->setPath('POST')
     //set base url
     ->setBaseUri('http://example.com')
     //set path

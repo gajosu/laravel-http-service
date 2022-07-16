@@ -15,6 +15,16 @@ use PHPUnit\Framework\Assert as PHPUnit;
 class HttpService extends Facade
 {
     /**
+     * Get request builder.
+     *
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
+     */
+    public static function request()
+    {
+        return static::getFacadeRoot()->getBuilder();
+    }
+
+    /**
      * Replace the builder with a fake one.
      * @return \Gajosu\LaravelHttpClient\Contracts\Service
      */
@@ -39,7 +49,7 @@ class HttpService extends Facade
         $service = static::getFacadeRoot();
         $builder = $service->getBuilder();
 
-        if (! $builder instanceof ApiRequestBuilderFake) {
+        if (!$builder instanceof ApiRequestBuilderFake) {
             throw new \RuntimeException('You can only use this method on a fake service');
         }
 

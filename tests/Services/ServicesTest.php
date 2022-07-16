@@ -15,7 +15,7 @@ class ServicesTest extends TestCase
 {
     public function testDefaultService()
     {
-        $builder = HttpService::getBuilder();
+        $builder = HttpService::request();
         $this->assertInstanceOf(ApiRequestBuilder::class, $builder);
     }
 
@@ -28,7 +28,7 @@ class ServicesTest extends TestCase
             $fake_response = new Response(200, [], '{"foo": "bar"}'),
         );
 
-        $builder = HttpService::getBuilder();
+        $builder = HttpService::request();
         $response = $builder->setPath('http://example.com')
             ->send();
 
@@ -62,18 +62,18 @@ class ServicesTest extends TestCase
 
         //Test requests
         //service 1
-        $builder = HttpService::getBuilder();
+        $builder = HttpService::request();
         $response = $builder->setPath('http://example.com')->send();
         $this->assertInstanceOf(ApiRequestBuilderFake::class, $builder);
         $this->assertEquals($fake_response1, $response->getOriginalResponse());
 
         //service 2
-        $builder = CustomServiceFacade::getBuilder();
+        $builder = CustomServiceFacade::request();
         $response = $builder->setPath('http://example.com')->send();
         $this->assertEquals($fake_response2, $response->getOriginalResponse());
 
         //service 3
-        $builder = CustomServiceTwoFacade::getBuilder();
+        $builder = CustomServiceTwoFacade::request();
         $response = $builder->setPath('http://example.com')->send();
         $this->assertEquals($fake_response3, $response->getOriginalResponse());
     }

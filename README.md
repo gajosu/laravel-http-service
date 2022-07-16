@@ -52,6 +52,172 @@ $response = $builder->send();
 $data = $response->json();
 ```
 
+## Make your own service
+
+As explained in the example above, you can start using the package with its base classes, but the purpose of this package is to make it easy to create your own services.
+
+You can make your own service by extending the `Gajosu\LaravelHttpClient\HttpService` class.<br>
+Rewrite the `getBuilder()` method and set Base Uri, headers, queries, etc.
+
+In the next example we will make a service that sends requests to `http://myservice.com` base url and set a access token in the headers.
+
+```php
+namespace App\Services\MyService;
+
+use Gajosu\LaravelHttpClient\HttpService;
+use Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder;
+
+class MyService extends HttpService
+{
+    private ?string $access_token = null;
+
+    public function setAccessToken(string $access_token): void
+    {
+        $this->access_token = $access_token;
+    }
+
+    public function getAccessToken(): ?string
+    {
+        return $this->access_token;
+    }
+
+    public function getBuilder(): HttpRequestBuilder
+    {
+        return parent::getBuilder()
+            ->setBaseUri('http://myservice.com')
+            ->setHeaders([
+                "Authorization" => "Basic {$this->access_token}"
+            ]);
+    }
+}
+```
+
+The next step is to create a facade for the service extending the `Gajosu\LaravelHttpClient\Facades\HttpService` class.
+
+```php
+namespace App\Services\MyService\Facades\MyService;
+
+use Gajosu\LaravelHttpClient\Facades\HttpService;
+
+/**
+ * @method static void setAccessToken(string $access_token)
+ * @method static string getAccessToken()
+ */
+class MyService extends HttpService
+{
+    
+    protected static function getFacadeAccessor()
+    {
+        return \App\Services\MyService\MyService::class;
+    }
+}
+```
+
+Now you can use the service in your application.
+
+```php
+use App\Services\MyService\Facades\MyService;
+
+MyService::setAccessToken('{YOUR_TOKEN}');
+$response = MyService::request()
+    ->setPath('POST')
+    ->setPath('/test')
+    ->setQuery([
+        'query1' => 'param'
+    ])
+    ->setBody([
+        'field1' => 'value'
+    ])
+    ->send();
+$data = $response->json();
+```
+
+## Caching Responses
+
+The package also allows you to cache the responses.
+
+```php
+use App\Services\MyService\Facades\MyService;
+
+MyService::setAccessToken('{YOUR_TOKEN}');
+$response = MyService::request()
+    ->setPath('GET')
+    ->setPath('/test')
+    ->setQuery([
+        'query1' => 'param'
+    ])
+    //you can set the cache time in seconds
+    ->cacheFor(60)
+    // or 
+    // ->cacheFor(now()->addMinutes(1))
+    // you can also keep the cache forever
+    // ->cacheForever()
+    ->send();
+$data = $response->json();
+```
+
+## Faking Responses
+
+For example, to instruct the package to return a fake response with code 200 and empty body for all requests, you can use the `fake()` method.
+
+```php
+use App\Services\MyService\Facades\MyService;
+
+
+MyService::fake()
+$response = MyService::request()
+    ->setPath('GET')
+    ->setPath('/test')
+    ->setQuery([
+        'query1' => 'param'
+    ])
+    ->fakeResponse(200, [])
+    ->send();
+$data = $response->json();
+```
+### Specifying responses
+
+You can also specify the responses code, headers and body passing an array to the `shouldReceiveResponses` method.
+
+```php
+use App\Services\MyService\Facades\MyService;
+
+MyService::fake();
+MyService::shouldReceiveResponses([
+    [
+        new \GuzzleHttp\Psr7\Response(
+            status : 200,
+            body: '{"success" : true}'
+        ),
+
+        new \GuzzleHttp\Psr7\Response(
+            status : 201,
+            body: '{"created" : true}'
+        )
+    ]
+]);
+
+$response = MyService::request()
+    ->setPath('GET')
+    ->setPath('/test')
+    ->setQuery([
+        'query1' => 'param'
+    ])
+    ->send();
+
+//get first fake response
+// [
+//   "success" => true
+// ]
+$data = $response->json();
+
+//get second fake response
+// [
+//   "created" => true
+// ]
+$data = $response->json();
+```
+
 ## Testing
 
 ```bash
@@ -64,7 +230,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/gajosu/.github/blob/main/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/gajosu/laravel-http-client/blob/main/.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 

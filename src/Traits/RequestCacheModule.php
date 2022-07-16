@@ -3,7 +3,7 @@
 namespace Gajosu\LaravelHttpClient\Traits;
 
 use DateTime;
-use Gajosu\LaravelHttpClient\Response\ApiResponse;
+use Gajosu\LaravelHttpClient\Contracts\Response;
 use Illuminate\Contracts\Cache\Repository;
 
 trait RequestCacheModule
@@ -110,10 +110,10 @@ trait RequestCacheModule
      * Save the response in the cache.
      *
      * @param string $key
-     * @param \Gajosu\LaravelHttpClient\Response\ApiResponse $response
+     * @param \Gajosu\LaravelHttpClient\Contracts\Response $response
      * @return void
      */
-    protected function saveResponseToCache(string $key, ApiResponse $response): void
+    protected function saveResponseToCache(string $key, Response $response): void
     {
         $ttl = $this->getCacheTtl();
         $cache = $this->getCacheDriver();
@@ -128,9 +128,9 @@ trait RequestCacheModule
      * Get the response from the cache.
      *
      * @param string $key
-     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\Contracts\Response
      */
-    protected function getResponseFromCache(string $key): ApiResponse|null
+    protected function getResponseFromCache(string $key): Response|null
     {
         return $this->getCacheDriver()->get($key);
     }

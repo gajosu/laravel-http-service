@@ -4,8 +4,9 @@ namespace  Gajosu\LaravelHttpClient\Response;
 
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
+use Gajosu\LaravelHttpClient\Contracts\Response;
 
-class ApiResponse
+class ApiResponse implements Response
 {
     /**
      * The underlying PSR response.
@@ -48,7 +49,7 @@ class ApiResponse
      */
     public function json($key = null, $default = null): mixed
     {
-        if (! $this->decoded) {
+        if (!$this->decoded) {
             $this->decoded = json_decode($this->body(), true);
         }
 
@@ -122,16 +123,6 @@ class ApiResponse
     }
 
     /**
-     * Return response in string
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return $this->body();
-    }
-
-    /**
      * return original response
      *
      * @return \Psr\Http\Message\ResponseInterface
@@ -139,5 +130,15 @@ class ApiResponse
     public function getOriginalResponse(): ResponseInterface
     {
         return $this->response;
+    }
+
+    /**
+     * Return response in string
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->body();
     }
 }

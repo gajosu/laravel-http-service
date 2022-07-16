@@ -3,7 +3,7 @@
 namespace Gajosu\LaravelHttpClient\Contracts;
 
 use DateTime;
-use Gajosu\LaravelHttpClient\Response\ApiResponse;
+use Gajosu\LaravelHttpClient\Contracts\Response;
 
 interface HttpRequestBuilder
 {
@@ -11,7 +11,7 @@ interface HttpRequestBuilder
      * Set method
      *
      * @param  string $method
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function setMethod(string $method): self;
 
@@ -19,7 +19,7 @@ interface HttpRequestBuilder
      * Set base uri
      *
      * @param  string $base_uri
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function setBaseUri(string $base_uri): self;
 
@@ -27,7 +27,7 @@ interface HttpRequestBuilder
      * Set path
      *
      * @param string $path
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function setPath(string $path): self;
 
@@ -35,7 +35,7 @@ interface HttpRequestBuilder
      * Set headers
      *
      * @param  array $headers
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function setHeaders(array $headers): self;
 
@@ -43,7 +43,7 @@ interface HttpRequestBuilder
      * Set query string
      *
      * @param  array $query
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function setQuery(array $query): self;
 
@@ -53,7 +53,7 @@ interface HttpRequestBuilder
      * @param  string $name
      * @param  string $contents
      * @param  ?string $file_name
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function setMultipart(string $name, string $contents, string $file_name = null): self;
 
@@ -61,7 +61,7 @@ interface HttpRequestBuilder
      * Set body
      *
      * @param  array $body
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function setBody(array $body): self;
 
@@ -69,14 +69,14 @@ interface HttpRequestBuilder
      * Indicate that the response should be cached
      *
      * @param DateTime|int|null $seconds
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function cacheFor(DateTime|int|null $seconds): self;
 
     /**
      * Indicate that the response should be cached forever
      *
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function cacheForever(): self;
 
@@ -84,7 +84,7 @@ interface HttpRequestBuilder
      * Indicate that the response should not be cached
      *
      * @param bool $avoidCache
-     * @return \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function dontCache(bool $avoidCache): self;
 
@@ -98,16 +98,16 @@ interface HttpRequestBuilder
     /**
      * Get response of the request
      *
-     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\contracts\Response
      */
-    public function get(): ApiResponse;
+    public function get(): Response;
 
     /**
      * Alias for get()
      *
-     * @return \Gajosu\LaravelHttpClient\Response\ApiResponse
+     * @return \Gajosu\LaravelHttpClient\contracts\Response
      */
-    public function send(): ApiResponse;
+    public function send(): Response;
 
     /**
      * Get the number of requests that have been made.

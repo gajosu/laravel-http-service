@@ -4,7 +4,6 @@ namespace  Gajosu\LaravelHttpClient\Request;
 
 use Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder;
 use Gajosu\LaravelHttpClient\Contracts\Response;
-use Gajosu\LaravelHttpClient\Response\ApiResponse;
 use Gajosu\LaravelHttpClient\Traits\RequestCacheModule;
 use Gajosu\LaravelHttpClient\Traits\RequestModule;
 use GuzzleHttp\Client;

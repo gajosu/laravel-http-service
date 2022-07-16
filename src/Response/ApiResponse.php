@@ -2,9 +2,9 @@
 
 namespace  Gajosu\LaravelHttpClient\Response;
 
+use Gajosu\LaravelHttpClient\Contracts\Response;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
-use Gajosu\LaravelHttpClient\Contracts\Response;
 
 class ApiResponse implements Response
 {
@@ -49,7 +49,7 @@ class ApiResponse implements Response
      */
     public function json($key = null, $default = null): mixed
     {
-        if (!$this->decoded) {
+        if (! $this->decoded) {
             $this->decoded = json_decode($this->body(), true);
         }
 

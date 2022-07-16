@@ -3,7 +3,6 @@
 namespace Gajosu\LaravelHttpClient\Contracts;
 
 use DateTime;
-use Gajosu\LaravelHttpClient\Contracts\Response;
 
 interface HttpRequestBuilder
 {

@@ -36,36 +36,35 @@ interface Response
      * @param  string|null  $key
      * @return \Illuminate\Support\Collection
      */
-
     public function collect($key = null): Collection;
+
     /**
      * Get a header from the response.
      *
      * @param  string  $header
      * @return string
      */
-
     public function header(string $header): string;
+
     /**
      * Get the headers from the response.
      *
      * @return array<array<string>>
      */
-
     public function headers(): array;
+
     /**
      * Get the status code of the response.
      *
      * @return int
      */
-
     public function status(): int;
+
     /**
      * Get the reason phrase of the response.
      *
      * @return string
      */
-
     public function reason();
 
     /**

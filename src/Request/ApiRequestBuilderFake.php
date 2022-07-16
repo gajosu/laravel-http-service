@@ -87,6 +87,6 @@ class ApiRequestBuilderFake extends ApiRequestBuilder
             return $response;
         }
 
-        return new Response(200, [], '{"foo": "bar"}');
+        return new Response(200);
     }
 }

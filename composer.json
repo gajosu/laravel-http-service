@@ -1,12 +1,12 @@
 {
-    "name": "gajosu/laravel-http-client",
-    "description": "This is my package laravel-http-client",
+    "name": "gajosu/laravel-http-service",
+    "description": "This is my package laravel-http-service",
     "keywords": [
         "gajosu",
         "laravel",
-        "laravel-http-client"
+        "laravel-http-service"
     ],
-    "homepage": "https://github.com/gajosu/laravel-http-client",
+    "homepage": "https://github.com/gajosu/laravel-http-service",
     "license": "MIT",
     "authors": [
         {

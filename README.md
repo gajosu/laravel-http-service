@@ -1,9 +1,9 @@
 # Laravel Http Client Service
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/gajosu/laravel-http-client.svg?style=flat-square)](https://packagist.org/packages/gajosu/laravel-http-client)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/gajosu/laravel-http-client/run-tests?label=tests)](https://github.com/gajosu/laravel-http-client/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/gajosu/laravel-http-client/Check%20&%20fix%20styling?label=code%20style)](https://github.com/gajosu/laravel-http-client/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/gajosu/laravel-http-client.svg?style=flat-square)](https://packagist.org/packages/gajosu/laravel-http-client)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/gajosu/laravel-http-service.svg?style=flat-square)](https://packagist.org/packages/gajosu/laravel-http-service)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/gajosu/laravel-http-service/run-tests?label=tests)](https://github.com/gajosu/laravel-http-service/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/gajosu/laravel-http-service/Check%20&%20fix%20styling?label=code%20style)](https://github.com/gajosu/laravel-http-service/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/gajosu/laravel-http-service.svg?style=flat-square)](https://packagist.org/packages/gajosu/laravel-http-service)
 
 Do you make a lot of http requests to microservices or external apis in your laravel projects?
 
@@ -16,7 +16,7 @@ This package allows you to create your own services, make requests and test them
 You can install the package via composer:
 
 ```bash
-composer require gajosu/laravel-http-client
+composer require gajosu/laravel-http-service
 ```
 
 ## Usage
@@ -230,7 +230,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/gajosu/laravel-http-client/blob/main/.github/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/gajosu/laravel-http-service/blob/main/.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 

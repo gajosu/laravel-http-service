@@ -28,7 +28,7 @@ use Gajosu\LaravelHttpClient\Facades\HttpService;
 
 /** @var \Gajosu\LaravelHttpClient\Request\ApiRequestBuilder $builder */
 $builder = HttpService::request()
-    ->setPath('POST')
+    ->setMethod('POST')
     //set base url
     ->setBaseUri('http://example.com')
     //set path
@@ -120,7 +120,7 @@ use App\Services\MyService\Facades\MyService;
 
 MyService::setAccessToken('{YOUR_TOKEN}');
 $response = MyService::request()
-    ->setPath('POST')
+    ->setMethod('POST')
     ->setPath('/test')
     ->setQuery([
         'query1' => 'param'
@@ -141,7 +141,7 @@ use App\Services\MyService\Facades\MyService;
 
 MyService::setAccessToken('{YOUR_TOKEN}');
 $response = MyService::request()
-    ->setPath('GET')
+    ->setMethod('GET')
     ->setPath('/test')
     ->setQuery([
         'query1' => 'param'
@@ -166,7 +166,7 @@ use App\Services\MyService\Facades\MyService;
 
 MyService::fake()
 $response = MyService::request()
-    ->setPath('GET')
+    ->setMethod('GET')
     ->setPath('/test')
     ->setQuery([
         'query1' => 'param'
@@ -198,7 +198,7 @@ MyService::shouldReceiveResponses([
 ]);
 
 $response = MyService::request()
-    ->setPath('GET')
+    ->setMethod('GET')
     ->setPath('/test')
     ->setQuery([
         'query1' => 'param'

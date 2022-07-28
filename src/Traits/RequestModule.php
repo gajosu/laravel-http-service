@@ -50,7 +50,7 @@ trait RequestModule
     {
         $options = [
             'headers' => $this->headers,
-            'verify' => $this->verify_ssl
+            'verify' => $this->verify_ssl,
         ];
 
         if (! empty($this->query)) {

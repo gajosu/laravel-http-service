@@ -98,7 +98,7 @@ interface HttpRequestBuilder
      * Set verify ssl
      *
      * @param bool $verify_ssl
-     * @return \Gajosu\LaravelHttpClient\Contracts\Response
+     * @return \Gajosu\LaravelHttpClient\Contracts\HttpRequestBuilder
      */
     public function setVerifySsl(bool $verify_ssl): self;
 

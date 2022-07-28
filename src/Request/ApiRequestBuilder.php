@@ -13,6 +13,7 @@ class ApiRequestBuilder implements HttpRequestBuilder
     use RequestCacheModule;
     use RequestModule;
 
+    protected bool $verify_ssl = true;
     protected ?string $base_uri = null;
     protected ?string $method = 'GET';
     protected ?string $path = '/';
@@ -120,6 +121,19 @@ class ApiRequestBuilder implements HttpRequestBuilder
     public function setBody(array $body): self
     {
         $this->body = array_merge($this->body, $body);
+
+        return $this;
+    }
+
+    /**
+     * Set verify ssl
+     *
+     * @param bool $verify_ssl
+     * @return self
+     */
+    public function setVerifySsl(bool $verify_ssl): self
+    {
+        $this->verify_ssl = $verify_ssl;
 
         return $this;
     }

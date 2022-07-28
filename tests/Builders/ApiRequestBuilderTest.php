@@ -156,6 +156,13 @@ class ApiRequestBuilderTest extends TestCase
         $this->assertEquals(0, $builder->getRequestsCount());
     }
 
+    public function testItCanSetVerify()
+    {
+        $builder = new ApiRequestBuilder();
+        $builder->setVerifySsl(false);
+        $this->assertEquals(false, $this->getPropertyWithReflection('verify_ssl', $builder));
+    }
+
     /**
      * @return ApiRequestBuilder
      */

@@ -95,6 +95,14 @@ interface HttpRequestBuilder
     public function shouldAvoidCache(): bool;
 
     /**
+     * Set verify ssl
+     *
+     * @param bool $verify_ssl
+     * @return \Gajosu\LaravelHttpClient\Contracts\Response
+     */
+    public function setVerifySsl(bool $verify_ssl): self;
+
+    /**
      * Get response of the request
      *
      * @return \Gajosu\LaravelHttpClient\Contracts\Response
